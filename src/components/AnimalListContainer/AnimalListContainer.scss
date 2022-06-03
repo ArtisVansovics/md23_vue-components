@@ -1,0 +1,10 @@
+.container {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100vh;
+  padding: 30px;
+  background-color: #DCF2E6;
+  color: #374019;
+}
