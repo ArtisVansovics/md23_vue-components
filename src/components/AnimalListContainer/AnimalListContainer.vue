@@ -2,7 +2,7 @@
   <div class="container">
     <AnimalSwitch />
     <h1>Title</h1>
-    <AnimalForm />
+    <AnimalForm @addAnimal="addAnimal" />
     <AnimalList />
   </div>
 </template>
@@ -13,12 +13,38 @@ import AnimalForm from "@/components/AnimalForm/AnimalForm.vue";
 import AnimalSwitch from "@/components/AnimalSwitch/AnimalSwitch.vue";
 import AnimalList from "@/components/AnimalList/AnimalList.vue";
 
+type Animal = {
+  id: number;
+  type: string;
+  name: string;
+};
+
 export default defineComponent({
   name: "AnimalListContainer",
   components: {
     AnimalSwitch,
     AnimalForm,
     AnimalList,
+  },
+  data: () => ({
+    animals: [] as Animal[],
+  }),
+  created() {
+    this.animals = JSON.parse(localStorage.getItem("animals") || "[]");
+  },
+  watch: {
+    animals(newAnimals) {
+      localStorage.setItem("animals", JSON.stringify(newAnimals));
+    },
+  },
+  methods: {
+    addAnimal(animal: Animal) {
+      const newAnimals = [...this.animals];
+
+      newAnimals.push(animal);
+
+      this.animals = newAnimals;
+    },
   },
 });
 </script>
