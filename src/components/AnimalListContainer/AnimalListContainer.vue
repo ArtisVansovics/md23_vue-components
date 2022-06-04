@@ -1,9 +1,8 @@
 <template>
   <div class="container">
     <AnimalSwitch />
-    <h1>Title</h1>
     <AnimalForm @addAnimal="addAnimal" />
-    <AnimalList />
+    <AnimalList :animals="animals" />
   </div>
 </template>
 
