@@ -4,9 +4,12 @@
       class="input"
       type="text"
       placeholder="Add new animal..."
+      minlength="3"
+      maxlength="20"
       v-model="inputValue"
+      required
     />
-    <select class="select" v-model="speciesSelection">
+    <select class="select" v-model="speciesSelection" required>
       <option disabled selected label="Type" />
       <option value="cat">CAT</option>
       <option value="dog">DOG</option>
