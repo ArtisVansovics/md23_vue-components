@@ -1,8 +1,8 @@
 <template>
-  <div class="container">
+  <div class="content-container">
     <AnimalSwitch />
     <AnimalForm @addAnimal="addAnimal" />
-    <AnimalList :animals="animals" @deleteAnimal="deleteAnimal" />
+    <AnimalList :animals="animalsDisplayed" @deleteAnimal="deleteAnimal" />
   </div>
 </template>
 
@@ -18,6 +18,8 @@ type Animal = {
   name: string;
 };
 
+type DisplayAnimals = "all" | "cats";
+
 export default defineComponent({
   name: "AnimalListContainer",
   components: {
@@ -27,9 +29,22 @@ export default defineComponent({
   },
   data: () => ({
     animals: [] as Animal[],
+    displayAnimals: "all" as DisplayAnimals,
   }),
   created() {
     this.animals = JSON.parse(localStorage.getItem("animals") || "[]");
+  },
+  computed: {
+    animalsOnlyCats() {
+      return this.animals.filter((animal) => animal.type === "cat");
+    },
+    animalsDisplayed() {
+      if (this.displayAnimals === "cats") {
+        return this.animalsOnlyCats;
+      }
+
+      return this.animals;
+    },
   },
   watch: {
     animals(newAnimals) {
@@ -50,6 +65,13 @@ export default defineComponent({
       newAnimals.splice(index, 1);
 
       this.animals = newAnimals;
+    },
+    toggleDisplayedAnimals() {
+      if (this.displayAnimals === "all") {
+        this.displayAnimals = "cats";
+      } else {
+        this.displayAnimals = "all";
+      }
     },
   },
 });
