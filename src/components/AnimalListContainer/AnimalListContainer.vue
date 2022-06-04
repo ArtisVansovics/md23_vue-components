@@ -1,6 +1,6 @@
 <template>
   <div class="content-container">
-    <AnimalSwitch />
+    <AnimalSwitch @toggleDisplayCats="toggleDisplayCats" />
     <AnimalForm @addAnimal="addAnimal" />
     <AnimalList :animals="animalsDisplayed" @deleteAnimal="deleteAnimal" />
   </div>
@@ -66,8 +66,8 @@ export default defineComponent({
 
       this.animals = newAnimals;
     },
-    toggleDisplayedAnimals() {
-      if (this.displayAnimals === "all") {
+    toggleDisplayCats(displayCats: boolean) {
+      if (!displayCats) {
         this.displayAnimals = "cats";
       } else {
         this.displayAnimals = "all";
