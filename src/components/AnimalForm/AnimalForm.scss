@@ -3,4 +3,53 @@
   flex-flow: row wrap;
   justify-content: space-between;
   gap: 16px;
+  padding-top: 30px;
+  font-size: 18px;
+}
+
+.input {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: #3E588C;
+  color: #C2D91A;
+
+  &:focus {
+    outline: #C2D91A 3px solid;
+  }
+}
+
+.select {
+  cursor: pointer;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #C2D91A;
+  color: #D9560B;
+
+  &:focus {
+    outline: #D9560B 3px solid;
+  }
+}
+
+.select option {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.button {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+  padding: 10px 15px;
+  background-color: #D9560B;
+  color: #384028;
+  font-weight: 600;
+  opacity: 0.7;
+  transition: opacity 0.5s;
+
+  &:hover {
+    opacity: 1;
+  }
 }
