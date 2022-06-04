@@ -1,9 +1,11 @@
 <template>
   <div class="list">
-    <div v-for="{ id, type, name } in animals" class="item" :key="id">
+    <div v-for="({ id, type, name }, index) in animals" class="item" :key="id">
       <div class="box">{{ type }}</div>
       <p>{{ name }}</p>
-      <button class="delete-button">X</button>
+      <button @click="animalDeleteHandler(index)" class="delete-button">
+        X
+      </button>
     </div>
   </div>
 </template>
@@ -14,6 +16,12 @@ import { defineComponent } from "vue";
 export default defineComponent({
   name: "AnimalList",
   props: ["animals"],
+  emits: ["deleteAnimal"],
+  methods: {
+    animalDeleteHandler(index: number) {
+      this.$emit("deleteAnimal", index);
+    },
+  },
 });
 </script>
 

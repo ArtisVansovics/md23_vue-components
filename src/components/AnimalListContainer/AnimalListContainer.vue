@@ -2,7 +2,7 @@
   <div class="container">
     <AnimalSwitch />
     <AnimalForm @addAnimal="addAnimal" />
-    <AnimalList :animals="animals" />
+    <AnimalList :animals="animals" @deleteAnimal="deleteAnimal" />
   </div>
 </template>
 
@@ -41,6 +41,13 @@ export default defineComponent({
       const newAnimals = [...this.animals];
 
       newAnimals.push(animal);
+
+      this.animals = newAnimals;
+    },
+    deleteAnimal(index: number) {
+      const newAnimals = [...this.animals];
+
+      newAnimals.splice(index, 1);
 
       this.animals = newAnimals;
     },
