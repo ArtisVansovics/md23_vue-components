@@ -1,6 +1,8 @@
 <template>
   <div class="content-container">
-    <AnimalSwitch @toggleDisplayCats="toggleDisplayCats" />
+    <div class="row-top">
+      <AnimalSwitch @toggleDisplayCats="toggleDisplayCats" />
+    </div>
     <AnimalForm @addAnimal="addAnimal" />
     <AnimalList :animals="animalsDisplayed" @deleteAnimal="deleteAnimal" />
   </div>

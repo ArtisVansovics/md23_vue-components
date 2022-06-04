@@ -9,3 +9,13 @@
   background-color: #687340;
   color: #3E588C;
 }
+
+.row-top {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  width: 100%;
+  padding-right: 30px;
+  color: #D9CC1A;
+  font-size: 18px;
+}
